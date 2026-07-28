@@ -2,21 +2,23 @@ const mongoose= require("mongoose");
 const Schema= mongoose.Schema;
 
 const listingSchema=new Schema({
-    id:Number,
+    
     eventName:{
         type:String,
+        required:true
     },
     foodType:String,
     portionsKg:Number,
     distanceKm:Number,
     expiryHours:Number,
     pickupLocation:String,
-    contactNumber:Number,
+    contactNumber:String,
     status:{
         type:String,
-        required:true
+            enum:["Available","Claimed"],
+            default:"Available"
     }
 })
 
-const Listing=mongoose.model("listing",listingSchema);
+const Listing=mongoose.model("Listing",listingSchema);
 module.exports=Listing;

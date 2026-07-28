@@ -28,6 +28,12 @@ app.get("/home",(req,res)=>{
     res.render("listing/home.ejs")
 })
 
+//Dashboard
+app.get("/listing/show",async (req,res)=>{
+    const alllisting=await Listing.find({});
+    res.render("listing/show.ejs",{alllisting});
+});
+
 app.listen(8080,()=>{
     console.log("server is listening to port 8080");
 })

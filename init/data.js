@@ -1,5 +1,5 @@
 const sample=[{
-        id: 1,
+        
         eventName: "Sharma Wedding",
         foodType: "Biryani (Veg)",
         portionsKg: 50,
@@ -10,7 +10,7 @@ const sample=[{
         status: "Available"
     },
     {
-        id: 2,
+        
         eventName: "Kumar Reception",
         foodType: "Mixed Dishes (Non-Veg)",
         portionsKg: 75,
@@ -21,7 +21,7 @@ const sample=[{
         status: "Available"
     },
     {
-        id: 3,
+        
         eventName: "Singh Birthday Party",
         foodType: "Snacks & Desserts",
         portionsKg: 30,
@@ -32,7 +32,7 @@ const sample=[{
         status: "Available"
     },
     {
-        id: 4,
+        
         eventName: "Verma Anniversary",
         foodType: "Full Meals (Veg)",
         portionsKg: 60,
@@ -43,7 +43,7 @@ const sample=[{
         status: "Available"
     },
     {
-        id: 5,
+        
         eventName: "Gupta Corporate Event",
         foodType: "Continental (Mixed)",
         portionsKg: 90,
@@ -54,7 +54,7 @@ const sample=[{
         status: "Available"
     },
     {
-        id: 6,
+       
         eventName: "Malhotra Baby Shower",
         foodType: "Snacks (Veg)",
         portionsKg: 20,
@@ -62,11 +62,11 @@ const sample=[{
         expiryHours: 3,
         pickupLocation: "Raj Nagar, Ghaziabad",
         contactNumber: "+91 98765 66778",
-        status: "Claimed"
+        status:"Available"
     }
 ];
 
-module.export={data:sample}
+module.exports={data:sample}
 
 
 
