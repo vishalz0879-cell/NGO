@@ -7,12 +7,28 @@
 </head>
 <body>
     <h3>List Your Leftovers</h3>
-    <br>
+    
     <p>Help us distribute your excess food to those in need</p>
     <br><br>
-    <form action="">
-        <input  type="text" placeholder="e.g., Sharma Wedding">
+    <form method="post" action="/listing/show">
+        <input name="listing[eventName]" placeholder="e.g., Sharma Wedding" type="text">
+        <br><br>
+         <input name="listing[foodType]" placeholder="Food type" type="text">
+         <br><br>
+         <input name="listing[portionsKg]" placeholder="50kg" type="number">
+         <br><br>
+         <input  name="listing[distanceKm]" placeholder="2km"  type="number">
+         <br><br>
+         <input name="listing[expiryHours]" placeholder="6" type="number">
+         <br><br>
+        <input name="listing[pickupLocation]" placeholder="e.g., Sector 62,Noida" type="text">
+        <br><br>
+        <input name="listing[contactNumber]" placeholder="e.g., +91 98765 43210" type="text">
+        <br><br>
+        
+        <button>Broadcast alert</button>
     </form>
+    
 
 </body>
 </html>
