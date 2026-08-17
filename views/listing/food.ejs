@@ -1,33 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NGO</title>
-</head>
-<body>
+<% layout("/layouts/boilerplate") %>
+<body style="background-color: black; color: white;">
+     <a href="/home" class="form-a" ><i class="fa-solid fa-arrow-left"></i>Back to home</a>
+    <div class="row mt-3 justify-content-center">
+        <div class="col-8">
+   
     <h3>List Your Leftovers</h3>
     
     <p>Help us distribute your excess food to those in need</p>
-    <br><br>
-    <form method="post" action="/listing/show">
-        <input name="listing[eventName]" placeholder="e.g., Sharma Wedding" type="text">
-        <br><br>
-         <input name="listing[foodType]" placeholder="Food type" type="text">
-         <br><br>
-         <input name="listing[portionsKg]" placeholder="50kg" type="number">
-         <br><br>
-         <input  name="listing[distanceKm]" placeholder="2km"  type="number">
-         <br><br>
-         <input name="listing[expiryHours]" placeholder="6" type="number">
-         <br><br>
-        <input name="listing[pickupLocation]" placeholder="e.g., Sector 62,Noida" type="text">
-        <br><br>
-        <input name="listing[contactNumber]" placeholder="e.g., +91 98765 43210" type="text">
-        <br><br>
+    
+    <form method="post" action="/listing/show" class="edit-form p-4">
+        <div class="mb-3">
+        <label for="eventName" class="form-label">Event Name</label>
+        <input name="listing[eventName]" placeholder="e.g., Sharma Wedding" type="text" class="form-control">
+        </div>
         
-        <button>Broadcast alert</button>
+        <div class="mb-3">
+        <label for="foodType" class="form-label">Food Type</label>
+        <select name="listing[foodType]" class="form-select" id="">
+            <option value="" disabled selected>Select Food Type</option>
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Non-vegetrain">Non-vegetrain</option>
+            <option value="vegan">Vegan</option>
+        </select>
+         
+        </div>
+         
+         <div class="mb-3">
+         <label for="portionsKg" class="form-label">Portion(in Kg)</label>
+         <input type="range" name="listing[portionsKg]" id="portionsKg"
+         min="1" max="100" value="50" class="form-range" 
+         oninput="document.getElementById('KgOutput').innerText=this.value+'kg'" >
+         
+         <span id="KgOutput ">50 Kg</span>
+         
+         </div>
+
+        <div class="mb-3">
+         <label for="distanceKm" class="form-label">Distance</label>
+         <input  name="listing[distanceKm]" placeholder="2km"  type="number">
+         </div>
+
+         <div class="mb-3">
+         <label for="expiryHours" class="form-label">Expiry Time(hours until it spoils)</label>
+         <input name="listing[expiryHours]" placeholder="6" type="number" class="form-control">
+        </div>
+
+        <div class="mb-3">
+         <label for="pickupLocation" class="form-label">Pickup Location</label>
+        <input name="listing[pickupLocation]" placeholder="e.g., Sector 62,Noida" type="text" class="form-control">
+        </div>
+
+        <div class="mb-3">
+        <label for="contactNumber" class="form-label">Contact Number</label>
+        <input name="listing[contactNumber]" placeholder="e.g., +91 98765 43210" type="text" class="form-control">
+        </div>
+        <div class="d-grid gap-2">
+        <button class="btn btn-primary">Broadcast alert</button>
+        </div>
     </form>
+    </div>
+    </div>
     
 
 </body>

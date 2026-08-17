@@ -1,19 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NGO</title>
-</head>
+<% layout("/layouts/boilerplate") %>
 <body>
+    <a href="/home">Back to home</a>
     <h2>NGO DAshboard</h2>
     <h3>Available Food Listings</h3>
-    <ul>
-    <%for(listing of alllisting){%>
-       
-          <li><%= listing.eventName %></a></li>
     
+        
+    <%for(listing of alllisting){%>
+    <div class="card">
+        <div class="card-body">
+          <a href="/listing/<%= listing._id %>" style="text-decoration: none;">
+           <h5 class="card-title"> <%= listing.eventName %></h5>
+           <h6 class="card-subtitle mb-2 text-body-secoundry">
+            <%= listing.portionsKg %> <br>
+            <%= listing.distanceKm %> <br>
+            <%= listing.expiryHours %>
+           </h6>
+        </a>
+         </div>
+    </div>
     <%}%>
-    </ul>
+        
+    
 </body>
 </html>

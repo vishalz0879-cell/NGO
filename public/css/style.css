@@ -1,0 +1,93 @@
+.fa-bowl-rice{
+    font-size: 5rem;
+}
+.fa-hand-holding-heart{
+    font-size: 5rem;
+}
+.icon{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+.btn-home{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 15px;
+   margin-top: 20px;
+   
+   
+}
+
+.excessfood{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.btn-home button{
+    padding: 14px 32px;
+    border-radius: 15px;
+    font-size: 1rem;
+    border: none;
+    font-weight: 600;
+
+}
+
+.btn-home button:hover{
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.excessfood a:first-child button{
+    background-color: #e4620b;
+}
+
+.excessfood a:last-child button{
+    background-color: #0ae051;
+}
+.Disaster button{
+    background-color: rgb(246, 28, 28);
+    width: 100%;
+    
+}
+
+.edit-form button{
+    background-color: linear-gradient(90deg,#0ea5e9,#38bdf8);
+    border-radius: 0.5rem;
+    color: white;
+    padding: 0.75rem;
+    width: 100%;
+}
+
+.edit-form{
+    background-color: rgb(27, 26, 26);
+    border-radius: 1rem;
+    color: white;
+    outline: none !important;
+}
+.edit-form input{
+    background-color: rgb(58, 56, 56) !important;
+    color: white !important;
+    outline: none !important;
+    
+}
+.edit-form select{
+    background-color: rgb(58, 56, 56) !important;
+    color: white !important;
+    
+}
+.edit-form input::placeholder,
+.edit-form select::placeholder{
+    color: rgb(178, 173, 173);
+    opacity: 1;
+}
+
+.form-a{
+  text-decoration: none;    
+  color: rgb(118, 111, 111) !important ;
+}
+

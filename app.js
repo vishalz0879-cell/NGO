@@ -4,6 +4,7 @@ const path=require("path");
 const mongoose = require("mongoose");
 const Listing=require("./models/listing.js")
 const methodOverride=require("method-override");
+const ejsMate = require("ejs-mate");
 
 
 
@@ -24,6 +25,8 @@ app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
 app.use(express.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
+app.engine("ejs",ejsMate);
+app.use(express.static(path.join(__dirname,"/public")));
 
 app.get("/",(req,res)=>{
     res.send("page is set up");
@@ -39,7 +42,6 @@ app.get("/listing/food",(req,res)=>{
     res.render("listing/food.ejs")
 })
 
-//
 
 //Dashboard
 app.get("/listing/show",async (req,res)=>{
@@ -47,12 +49,21 @@ app.get("/listing/show",async (req,res)=>{
     res.render("listing/show.ejs",{alllisting});
 });
 
+//show detail route
+app.get("/listing/:id",async (req,res)=>{
+    let {id}=req.params;
+    const listing=await Listing.findById(id);
+    res.render("listing/detail.ejs",{listing})
+})
+
 //create route
 app.post("/listing/show",async (req,res)=>{
     const newListing=new Listing(req.body.listing);
     await newListing.save();
     res.redirect("/listing/show")
 })
+
+
 
 app.listen(8080,()=>{
     console.log("server is listening to port 8080");
