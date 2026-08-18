@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Edit your page here</h3>
+    <form action="/listing/<%= listing._id %>?_method=PUT" method="POST">
+         <label for="eventName" class="form-label">Event Name</label>
+        <input name="listing[eventName]" value="<%= listing.eventName %>" type="text" class="form-control">
+        <br><br>
+        <label for="foodType" class="form-label">Food Type</label>
+        <select name="listing[foodType]" class="form-select" id="">
+            <option value="" disabled selected>Select Food Type</option>
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Non-vegetrain">Non-vegetrain</option>
+            <option value="vegan">Vegan</option>
+        </select>
+        <br><br>
+        <label for="portionsKg" class="form-label">Portion(in Kg)</label>
+         <input type="range" name="listing[portionsKg]" id="portionsKg"
+         min="1" max="100" value="50" class="form-range" 
+         oninput="document.getElementById('KgOutput').innerText=this.value+'kg'" >
+         
+         <span id="KgOutput">50 Kg</span>
+         <br><br>
+         <label for="distanceKm" class="form-label">Distance</label>
+         <input  name="listing[distanceKm]" value="<%= listing.distanceKm %> " type="number">
+        <br><br>
+        <label for="expiryHours" class="form-label">Expiry Time(hours until it spoils)</label>
+         <input name="listing[expiryHours]" value="listing.expiryHours" type="number" class="form-control">
+        <br><br>
+         <label for="pickupLocation" class="form-label">Pickup Location</label>
+        <input name="listing[pickupLocation]" value="<%= listing.pickupLocation %>" type="text" class="form-control">
+       <br><br>
+       <label for="contactNumber" class="form-label">Contact Number</label>
+        <input name="listing[contactNumber]" value="<%= listing.contactNumber %>" type="text" class="form-control">
+        <br><br>
+        <button>Submit</button>
+    </form>
+</body>
+</html>
