@@ -16,9 +16,9 @@
             <%= listing.expiryHours %>
            </h6>
         </a>
-        <a href="/listing/<%= listing._id %>/edit">
-        <button >Edit</button>
-        </a>
+        <form action="/listing/<%= listing._id %>?_method=DELETE" method="POST">
+            <button>Delete</button>
+        </form>
          </div>
     </div>
     <%}%>

@@ -14,5 +14,8 @@
     <p><%= listing.portionsKg %>Kg available</p>
     <p><%= listing.distanceKm %>Km away</p>
     <p>Expires in <%= listing.expiryHours %></p>
+    <a href="/listing/<%= listing._id %>/edit">
+        <button >Edit</button>
+        </a>
 </body>
 </html>
