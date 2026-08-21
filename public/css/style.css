@@ -86,8 +86,36 @@
     opacity: 1;
 }
 
+/* Styling for Show page*/
 .form-a{
   text-decoration: none;    
   color: rgb(118, 111, 111) !important ;
 }
 
+.food-card{
+    border-radius: 12px !important;
+    border:0.8px solid #535252 !important;
+    box-shadow: 0px 2px 8px rgb(0,0,0,0.08);
+    transition: transform 0.2s ease,box-shadow 0.2s ease !important;
+    padding: 8px !important;
+    text-decoration: none !important;
+    background-color: rgb(31, 30, 30) !important;
+}
+
+.food-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgb(0,0,0,0.12);
+}
+.food-card .card-title{
+    font-size: 1.3rem !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.food-card .card-subtitle{
+    color: rgb(146, 143, 143);
+    line-height: 1.6;
+    font-size: 1rem;
+    font-weight: 400;
+}

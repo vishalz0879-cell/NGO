@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<% layout("/layouts/boilerplate") %>
+
     <h3>Edit your page here</h3>
     <form action="/listing/<%= listing._id %>?_method=PUT" method="POST">
          <label for="eventName" class="form-label">Event Name</label>
@@ -40,5 +34,4 @@
         <br><br>
         <button>Submit</button>
     </form>
-</body>
-</html>
+     

@@ -1,28 +1,27 @@
 <% layout("/layouts/boilerplate") %>
-<body>
+<body style="background-color: black; color: azure;">
     <a href="/home">Back to home</a>
     <h2>NGO DAshboard</h2>
     <h3>Available Food Listings</h3>
-    
-        
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 gx-4 gy-3">
     <%for(listing of alllisting){%>
-    <div class="card">
+        <div class="col">
+    
+      <div class="card food-card">
         <div class="card-body">
           <a href="/listing/<%= listing._id %>" style="text-decoration: none;">
            <h5 class="card-title"> <%= listing.eventName %></h5>
            <h6 class="card-subtitle mb-2 text-body-secoundry">
-            <%= listing.portionsKg %> <br>
-            <%= listing.distanceKm %> <br>
-            <%= listing.expiryHours %>
+            <%= listing.portionsKg %>Kg Available <br>
+            <%= listing.distanceKm %>Km away<br>
+            Expires in<%= listing.expiryHours %>h
            </h6>
-        </a>
-        <form action="/listing/<%= listing._id %>?_method=DELETE" method="POST">
-            <button>Delete</button>
-        </form>
+          </a>
          </div>
+       </div>
+       </div>
+       <%}%>
     </div>
-    <%}%>
-        
     
 </body>
 </html>
