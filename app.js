@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 const Listing=require("./models/listing.js")
 const methodOverride=require("method-override");
 const ejsMate = require("ejs-mate");
+const ExpressError=require("./utils/ExpressError.js");
+const wrapAsync=require("./utils/wrapAsync.js");
 
 
 
@@ -44,48 +46,59 @@ app.get("/listing/food",(req,res)=>{
 
 
 //Dashboard
-app.get("/listing/show",async (req,res)=>{
+app.get("/listing/show",wrapAsync(async (req,res)=>{
     const alllisting=await Listing.find({});
     res.render("listing/show.ejs",{alllisting});
-});
+}));
 
 //show detail route
-app.get("/listing/:id",async (req,res)=>{
+app.get("/listing/:id",wrapAsync(async (req,res)=>{
     let {id}=req.params;
     const listing=await Listing.findById(id);
     res.render("listing/detail.ejs",{listing})
-})
+}));
 
 //create route
-app.post("/listing/show",async (req,res)=>{
+app.post("/listing/show",wrapAsync(async (req,res)=>{
     const newListing=new Listing(req.body.listing);
     await newListing.save();
     res.redirect("/listing/show")
-})
+}))
 
 //edit route
-app.get("/listing/:id/edit",async (req,res)=>{
+app.get("/listing/:id/edit",wrapAsync(async (req,res)=>{
       let {id}=req.params;
     const listing=await Listing.findById(id);
     res.render("listing/edit.ejs",{listing})
-})
+}));
 
 
 
-app.put("/listing/:id",async (req,res)=>{
+app.put("/listing/:id",wrapAsync(async (req,res)=>{
     let {id}=req.params;
     await Listing.findByIdAndUpdate(id,{...req.body.listing});
     res.redirect(`/listing/${id}`);
 
-})
+}))
 
 //Delete Route
-app.delete("/listing/:id",async (req,res)=>{
+app.delete("/listing/:id",wrapAsync(async (req,res)=>{
     let {id}=req.params;
     let deletedListing= await Listing.findByIdAndDelete(id);
     console.log(deletedListing);
     res.redirect("/listing/show");
+}))
+
+
+app.all("*splat",(req,res,next)=>{
+    next(new ExpressError(404,"Page not exist"))
+    
 })
+
+app.use((err, req, res, next) => {
+  const { statusCode = 500, message = "Something went wrong" } = err;
+  res.status(statusCode).render("error.ejs", { statusCode, message });
+});
 
 
 
