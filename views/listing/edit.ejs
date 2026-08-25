@@ -1,37 +1,42 @@
 <% layout("/layouts/boilerplate") %>
 
     <h3>Edit your page here</h3>
-    <form action="/listing/<%= listing._id %>?_method=PUT" method="POST">
+    <form action="/listing/<%= listing._id %>?_method=PUT" method="POST" class="needs-validation" novalidate >
          <label for="eventName" class="form-label">Event Name</label>
-        <input name="listing[eventName]" value="<%= listing.eventName %>" type="text" class="form-control">
+        <input name="listing[eventName]" value="<%= listing.eventName %>" type="text" class="form-control" id="eventName" required>
+        <div class="invalid-feedback">Please change the event name</div>
         <br><br>
         <label for="foodType" class="form-label">Food Type</label>
-        <select name="listing[foodType]" class="form-select" id="">
-            <option value="" disabled selected>Select Food Type</option>
-            <option value="Vegetarian">Vegetarian</option>
-            <option value="Non-vegetrain">Non-vegetrain</option>
-            <option value="vegan">Vegan</option>
+        <select name="listing[foodType]" class="form-select" id="foodType" required>
+            <option value="" disabled>Select Food Type</option>
+            <option value="Vegetarian" <%= listing.foodType === "Vegetarian" ? "selected" : "" %>>Vegetarian</option>
+            <option value="Non-vegetarian" <%= listing.foodType === "Non-vegetarian" ? "selected" : "" %>>Non-vegetarian</option>
+            <option value="Vegan" <%= listing.foodType === "Vegan" ? "selected" : "" %>>Vegan</option>
         </select>
+        <div class="invalid-feedback">Change the food type</div>
         <br><br>
         <label for="portionsKg" class="form-label">Portion(in Kg)</label>
          <input type="range" name="listing[portionsKg]" id="portionsKg"
-         min="1" max="100" value="50" class="form-range" 
+         min="1" max="100" value="<%= listing.portionsKg %>" class="form-range" 
          oninput="document.getElementById('KgOutput').innerText=this.value+'kg'" >
-         
-         <span id="KgOutput">50 Kg</span>
+         <span id="KgOutput"><%= listing.portionsKg %>Kg </span>
          <br><br>
          <label for="distanceKm" class="form-label">Distance</label>
-         <input  name="listing[distanceKm]" value="<%= listing.distanceKm %> " type="number">
-        <br><br>
+         <input  name="listing[distanceKm]" value="<%= listing.distanceKm %> " type="number" class="form-control" id="distanceKm" required>
+           <div class="invalid-feedback">Please enter the Distance</div>
+           <br><br>
         <label for="expiryHours" class="form-label">Expiry Time(hours until it spoils)</label>
-         <input name="listing[expiryHours]" value="listing.expiryHours" type="number" class="form-control">
+         <input name="listing[expiryHours]" value="<%=listing.expiryHours%>" type="number" class="form-control" id="expiryHours" required>
+           <div class="invalid-feedback">Please enter Expiry Time</div>
         <br><br>
          <label for="pickupLocation" class="form-label">Pickup Location</label>
-        <input name="listing[pickupLocation]" value="<%= listing.pickupLocation %>" type="text" class="form-control">
+        <input name="listing[pickupLocation]" value="<%= listing.pickupLocation %>" type="text" class="form-control" id="pickupLocation" required>
+        <div class="invalid-feedback">Please put pickup location</div>
        <br><br>
        <label for="contactNumber" class="form-label">Contact Number</label>
-        <input name="listing[contactNumber]" value="<%= listing.contactNumber %>" type="text" class="form-control">
+        <input name="listing[contactNumber]" value="<%= listing.contactNumber %>" type="text" class="form-control" id="contactNumber" required>
+        <div class="invalid-feedback">Please enter contact Number</div>
         <br><br>
-        <button>Submit</button>
+        <button class="btn btn-primary">Submit</button>
     </form>
      
