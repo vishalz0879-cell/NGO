@@ -8,6 +8,8 @@ const ejsMate = require("ejs-mate");
 const ExpressError=require("./utils/ExpressError.js");
 const wrapAsync=require("./utils/wrapAsync.js");
 
+const listingRouter = require("./routes/listing.js");
+
 
 
 main()
@@ -30,64 +32,13 @@ app.use(methodOverride("_method"));
 app.engine("ejs",ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
 
-app.get("/",(req,res)=>{
-    res.send("page is set up");
-})
+app.get("/", (req, res) => {
+    res.redirect("/listing");
+});
 
-//home page
-app.get("/home",(req,res)=>{
-    res.render("listing/home.ejs")
-})
-
-//food page
-app.get("/listing/food",(req,res)=>{
-    res.render("listing/food.ejs")
-})
+app.use("/listing",listingRouter);
 
 
-//Dashboard
-app.get("/listing/show",wrapAsync(async (req,res)=>{
-    const alllisting=await Listing.find({});
-    res.render("listing/show.ejs",{alllisting});
-}));
-
-//show detail route
-app.get("/listing/:id",wrapAsync(async (req,res)=>{
-    let {id}=req.params;
-    const listing=await Listing.findById(id);
-    res.render("listing/detail.ejs",{listing})
-}));
-
-//create route
-app.post("/listing/show",wrapAsync(async (req,res)=>{
-    const newListing=new Listing(req.body.listing);
-    await newListing.save();
-    res.redirect("/listing/show")
-}))
-
-//edit route
-app.get("/listing/:id/edit",wrapAsync(async (req,res)=>{
-      let {id}=req.params;
-    const listing=await Listing.findById(id);
-    res.render("listing/edit.ejs",{listing})
-}));
-
-
-
-app.put("/listing/:id",wrapAsync(async (req,res)=>{
-    let {id}=req.params;
-    await Listing.findByIdAndUpdate(id,{...req.body.listing});
-    res.redirect(`/listing/${id}`);
-
-}))
-
-//Delete Route
-app.delete("/listing/:id",wrapAsync(async (req,res)=>{
-    let {id}=req.params;
-    let deletedListing= await Listing.findByIdAndDelete(id);
-    console.log(deletedListing);
-    res.redirect("/listing/show");
-}))
 
 
 app.all("*splat",(req,res,next)=>{

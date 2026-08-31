@@ -1,19 +1,28 @@
 <% layout("/layouts/boilerplate") %>
-<body>
-     <h3>Listing detail</h3>
-   <div class="detalis">
-    <b><%=listing.eventName%></b><br>
+<body style="background-color: #000000;color :#f1f1f1">
+       <a href="/listing/show" class="form-a" ><i class="fa-solid fa-arrow-left"></i>Back</a>
+   <div class="row mt-3 justify-content-center">
+    <div class="col-8">
+    <div class="detail-card">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="event-name"><%= listing.eventName %></span>
+                <span class="badge bg-secondary status-badge"><%= listing.status %></span>
+            </div>
     
-    <%= listing.foodType %> 
-    <p><%= listing.portionsKg %>Kg available</p>
-    <p><%= listing.distanceKm %>Km away</p>
-    <p>Expires in <%= listing.expiryHours %></p>
+    <p><i class="fa-solid fa-utensils me-2"></i><%= listing.foodType %> </p>
+     <p><i class="fa-solid fa-weight-scale me-2"></i><%= listing.portionsKg %>Kg available</p>
+    <p><i class="fa-solid fa-location-dot me-2"></i><%= listing.distanceKm %>Km away</p>
+    <p><i class="fa-solid fa-clock me-2"></i>Expires in <%= listing.expiryHours %></p>
+     <p><i class="fa-solid fa-map-pin me-2"></i>Pickup: <%= listing.pickupLocation %></p>
+      <p><i class="fa-solid fa-phone me-2"></i>Contact: <%= listing.contactNumber %></p>
     <a href="/listing/<%= listing._id %>/edit">
-        <button >Edit</button>
+        <button class="btn btn-outline-light">Edit</button>
         </a>
         <form action="/listing/<%= listing._id %>?_method=DELETE" method="POST">
-            <button>Delete</button>
+            <button class="btn btn-danger">Delete</button>
          </form>
+  </div>
+  </div>
   </div>
 
 </body>

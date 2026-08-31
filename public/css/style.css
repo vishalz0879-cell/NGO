@@ -119,3 +119,32 @@
     font-size: 1rem;
     font-weight: 400;
 }
+
+/*Styling for detali route*/
+
+.detail-card{
+    background-color: #1e1e1e;
+    border: 1 px solid #333;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 1.5rem;
+}
+
+.detail-card .event-name{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.detail-card p{
+    margin-top: 0.5rem !important;
+    color: #d0d0d0 !important;
+}
+
+.detail-card .status-badge {
+    font-size: 0.85rem;
+}
+
+.detail-card .btn {
+    margin-top: 1rem;
+    margin-right: 0.5rem;
+}
